@@ -1,4 +1,4 @@
-# 🚀 SyntechXHub Web Development Internship Projects
+# 🚀  Syntecxhub Web Development Internship Projects
 
 Welcome to my repository for the **SyntechXHub Web Development Internship**. This repository contains all weekly projects built during the program, showcasing my progress in modern frontend development, React, APIs, and UI/UX design.
 
@@ -8,7 +8,7 @@ Welcome to my repository for the **SyntechXHub Web Development Internship**. Thi
 
 - **Name:** Rajeev Khanduri
 - **Track:** Web Development
-- **Organization:** SyntechXHub
+- **Organization:** Syntecxhub
 
 ---
 
