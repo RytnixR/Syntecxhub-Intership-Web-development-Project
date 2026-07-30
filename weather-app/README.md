@@ -1,6 +1,6 @@
 # 🌤️ Week 1: Weather App Dashboard
 
-A responsive, feature-rich weather dashboard built with React and Vite for the **SyntechXHub Web Development Internship (Week 1)**. This application replicates the clean interface of Google Weather while adding interactive charts, city search autocomplete, auto-location detection, and dynamic condition-based background themes.
+A responsive, feature-rich weather dashboard built with React and Vite for the **Syntecxhub Web Development Internship (Week 1)**. This application replicates the clean interface of Google Weather while adding interactive charts, city search autocomplete, auto-location detection, and dynamic condition-based background themes.
 
 🚀 **Live Demo:** [https://globally-weather-app.netlify.app/](https://globally-weather-app.netlify.app/)
 
