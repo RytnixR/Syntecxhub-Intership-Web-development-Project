@@ -6,7 +6,7 @@ Welcome to my repository for the **SyntechXHub Web Development Internship**. Thi
 
 ## 👨‍💻 Intern Details
 
-- **Name:** Rajaav Khanduri
+- **Name:** Rajeev Khanduri
 - **Track:** Web Development
 - **Organization:** SyntechXHub
 
