@@ -5,15 +5,15 @@ const {
   createTask,
   updateTask,
   deleteTask,
-  getTaskStats,
 } = require('../controllers/taskController');
 const { protect } = require('../middleware/authMiddleware');
 
-// Protect all task routes with JWT
-router.use(protect);
+router.route('/')
+  .get(protect, getTasks)
+  .post(protect, createTask);
 
-router.get('/stats', getTaskStats);
-router.route('/').get(getTasks).post(createTask);
-router.route('/:id').put(updateTask).delete(deleteTask);
+router.route('/:id')
+  .put(protect, updateTask)
+  .delete(protect, deleteTask);
 
 module.exports = router;

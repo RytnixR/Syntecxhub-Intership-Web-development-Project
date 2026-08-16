@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
-import { Mail, Lock, User, CheckSquare, Eye, EyeOff, Loader2 } from 'lucide-react';
+import { Mail, Lock, User, CheckSquare, Eye, EyeOff, Loader2, AlertCircle } from 'lucide-react';
 import toast from 'react-hot-toast';
 
 export default function Auth() {
@@ -10,12 +10,16 @@ export default function Auth() {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
 
   const { login, register } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setErrorMsg('');
+
     if (!email || !password || (!isLogin && !name)) {
+      setErrorMsg('Please fill in all fields');
       toast.error('Please fill in all fields');
       return;
     }
@@ -30,7 +34,12 @@ export default function Auth() {
         toast.success('Account created successfully!');
       }
     } catch (err) {
-      toast.error(err.response?.data?.message || 'Authentication failed');
+      const message =
+        err.response?.data?.message ||
+        err.message ||
+        'Invalid credentials. Please check your email and password.';
+      setErrorMsg(message);
+      toast.error(message);
     } finally {
       setLoading(false);
     }
@@ -41,7 +50,7 @@ export default function Auth() {
       <div className="w-full max-w-md bg-white dark:bg-slate-900 rounded-3xl shadow-xl border border-slate-200 dark:border-slate-800 p-8">
         
         {/* Header Icon & Title */}
-        <div className="text-center mb-8">
+        <div className="text-center mb-6">
           <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-indigo-600 shadow-lg shadow-indigo-500/30 text-white mb-4">
             <CheckSquare className="w-7 h-7" />
           </div>
@@ -52,6 +61,14 @@ export default function Auth() {
             {isLogin ? 'Sign in to access your workspace' : 'Get started with TaskFlow Pro'}
           </p>
         </div>
+
+        {/* Error Alert Box */}
+        {errorMsg && (
+          <div className="mb-5 p-3.5 bg-red-500/10 border border-red-500/30 rounded-xl flex items-center gap-2.5 text-red-600 dark:text-red-400 text-sm font-medium animate-fadeIn">
+            <AlertCircle className="w-5 h-5 flex-shrink-0" />
+            <span>{errorMsg}</span>
+          </div>
+        )}
 
         <form onSubmit={handleSubmit} className="space-y-4">
           
@@ -66,7 +83,10 @@ export default function Auth() {
                 <input
                   type="text"
                   value={name}
-                  onChange={(e) => setName(e.target.value)}
+                  onChange={(e) => {
+                    setName(e.target.value);
+                    if (errorMsg) setErrorMsg('');
+                  }}
                   placeholder="e.g. Alex Johnson"
                   required={!isLogin}
                   className="w-full pl-10 pr-4 py-2.5 bg-slate-50 dark:bg-slate-800/80 border border-slate-300 dark:border-slate-700 rounded-xl text-sm font-medium text-slate-900 dark:text-slate-100 placeholder:text-slate-500 dark:placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 focus:bg-white dark:focus:bg-slate-800 transition"
@@ -85,7 +105,10 @@ export default function Auth() {
               <input
                 type="email"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                  if (errorMsg) setErrorMsg('');
+                }}
                 placeholder="name@example.com"
                 required
                 className="w-full pl-10 pr-4 py-2.5 bg-slate-50 dark:bg-slate-800/80 border border-slate-300 dark:border-slate-700 rounded-xl text-sm font-medium text-slate-900 dark:text-slate-100 placeholder:text-slate-500 dark:placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 focus:bg-white dark:focus:bg-slate-800 transition"
@@ -103,7 +126,10 @@ export default function Auth() {
               <input
                 type={showPassword ? 'text' : 'password'}
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                  if (errorMsg) setErrorMsg('');
+                }}
                 placeholder="••••••••"
                 required
                 className="w-full pl-10 pr-10 py-2.5 bg-slate-50 dark:bg-slate-800/80 border border-slate-300 dark:border-slate-700 rounded-xl text-sm font-medium text-slate-900 dark:text-slate-100 placeholder:text-slate-500 dark:placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 focus:bg-white dark:focus:bg-slate-800 transition"
@@ -141,7 +167,10 @@ export default function Auth() {
         <div className="mt-6 text-center">
           <button
             type="button"
-            onClick={() => setIsLogin(!isLogin)}
+            onClick={() => {
+              setIsLogin(!isLogin);
+              setErrorMsg('');
+            }}
             className="text-xs font-semibold text-indigo-600 dark:text-indigo-400 hover:underline transition"
           >
             {isLogin

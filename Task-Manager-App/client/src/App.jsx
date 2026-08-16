@@ -103,8 +103,6 @@ function Dashboard() {
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-200">
-      <Toaster position="top-right" toastOptions={{ duration: 2500 }} />
-
       <Navbar
         onOpenTaskModal={handleOpenModal}
         viewMode={viewMode}
@@ -238,6 +236,7 @@ export default function App() {
   return (
     <AuthProvider>
       <TaskProvider>
+        <Toaster position="top-right" toastOptions={{ duration: 2500 }} />
         <Dashboard />
       </TaskProvider>
     </AuthProvider>

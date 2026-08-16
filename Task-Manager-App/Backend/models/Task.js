@@ -1,10 +1,5 @@
 const mongoose = require('mongoose');
 
-const subtaskSchema = new mongoose.Schema({
-  title: { type: String, required: true },
-  isCompleted: { type: Boolean, default: false },
-});
-
 const taskSchema = new mongoose.Schema(
   {
     user: {
@@ -14,7 +9,7 @@ const taskSchema = new mongoose.Schema(
     },
     title: {
       type: String,
-      required: [true, 'Please add a task title'],
+      required: true,
       trim: true,
     },
     description: {
@@ -23,27 +18,19 @@ const taskSchema = new mongoose.Schema(
     },
     status: {
       type: String,
-      enum: ['todo', 'in_progress', 'review', 'completed'],
-      default: 'todo',
+      enum: ['pending', 'in-progress', 'completed'],
+      default: 'pending',
     },
     priority: {
       type: String,
-      enum: ['low', 'medium', 'high', 'urgent'],
+      enum: ['low', 'medium', 'high'],
       default: 'medium',
-    },
-    category: {
-      type: String,
-      default: 'General',
     },
     dueDate: {
       type: Date,
-      default: null,
     },
-    subtasks: [subtaskSchema],
   },
-  {
-    timestamps: true,
-  }
+  { timestamps: true }
 );
 
-module.exports = mongoose.models.Task || mongoose.model('Task', taskSchema);
+module.exports = mongoose.model('Task', taskSchema);
