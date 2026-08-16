@@ -27,7 +27,7 @@ Welcome to my repository for the **Syntecxhub Web Development Internship**. This
 
 To view the setup or source code of an individual project, navigate directly into its respective folder:
 - [📁 Week 1 - Weather App](./weather-app)
-- [📁 Week 2 - User Management System](./user-management)
+- [📁 Week 2 - User Management System](./User_Management_System)
 - [📁 Week 3 - TaskFlow Pro (Task Manager)](./Task-Manager-App)
 
 ---
