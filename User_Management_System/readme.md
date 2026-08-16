@@ -15,17 +15,6 @@ A full-stack user administration application built during **Week 2** of the **Sy
 
 ---
 
-## 🔗 Related Internship Projects
-
-| Week / Project | Domain | Live Demo / Repository Link |
-| :--- | :--- | :--- |
-| **Week 1: Weather Forecast App** | Frontend REST API Integration | [weather-app](../weather-app) |
-| **Week 2: User Management System** | Full-Stack CRUD Application | [Live Demo](https://syntecxhub-user-management.onrender.com) \| [Code](./) |
-| **Final: Task Manager App (MERN)** | Full-Stack Kanban & Auth Platform | [Task-Manager-App](../Task-Manager-App) |
-| **Main Overview** | Root Directory Documentation | [Root README.md](../README.md) |
-
----
-
 ## ✨ Key Features
 
 * **Full CRUD Operations:** Create, Read, Update, and Delete user profile records.
