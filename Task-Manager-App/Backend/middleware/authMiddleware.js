@@ -1,7 +1,7 @@
-const jwt = require('jsonwebtoken');
-const User = require('../models/User');
+import jwt from 'jsonwebtoken';
+import User from '../models/User.js';
 
-const protect = async (req, res, next) => {
+export const protect = async (req, res, next) => {
   let token;
 
   if (
@@ -10,16 +10,12 @@ const protect = async (req, res, next) => {
   ) {
     try {
       token = req.headers.authorization.split(' ')[1];
-      const decoded = jwt.verify(token, process.env.JWT_SECRET || 'secret123');
-
+      const decoded = jwt.verify(token, process.env.JWT_SECRET);
       req.user = await User.findById(decoded.id).select('-password');
-      if (!req.user) {
-        return res.status(401).json({ message: 'User not found' });
-      }
-
-      next();
+      return next();
     } catch (error) {
-      return res.status(401).json({ message: 'Not authorized, token failed' });
+      console.error('Auth Middleware Error:', error);
+      return res.status(401).json({ message: 'Not authorized, token invalid or expired' });
     }
   }
 
@@ -27,5 +23,3 @@ const protect = async (req, res, next) => {
     return res.status(401).json({ message: 'Not authorized, no token provided' });
   }
 };
-
-module.exports = { protect };

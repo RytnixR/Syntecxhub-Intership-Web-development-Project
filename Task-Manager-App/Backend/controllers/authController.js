@@ -20,7 +20,6 @@ export const register = async (req, res) => {
       return res.status(400).json({ message: 'An account with this email already exists' });
     }
 
-    // Creating the user automatically triggers the pre-save password hash
     const user = await User.create({
       name: name.trim(),
       email: cleanEmail,
