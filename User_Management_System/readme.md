@@ -7,8 +7,6 @@ A full-stack user administration application built during **Week 2** of the **Sy
 ## 🌐 Live Demo & Repository Links
 
 * **Live Application:** [syntecxhub-user-management.onrender.com](https://syntecxhub-user-management.onrender.com)
-* **Main Repository:** [Syntecxhub-Intership-Web-development-Project](https://github.com/RytnixR/Syntecxhub-Intership-Web-development-Project)
-* **Project Directory:** [User_Management_System](https://github.com/RytnixR/Syntecxhub-Intership-Web-development-Project/tree/main/User_Management_System)
 
 > ⏳ **Please Note (Cold Start Delay):**  
 > Because the application is hosted on Render's free tier, the server automatically spins down after periods of inactivity. Please allow **30 to 50 seconds** for the initial load while the cloud instance boots up. Subsequent requests will load instantly.
